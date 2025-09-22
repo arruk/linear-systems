@@ -24,3 +24,10 @@ lazy val root = (project in file("."))
     addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full),
   )
 
+
+lazy val welcome = taskKey[Unit]("Run the welcome test")
+
+welcome := {
+  println("Running Welcome test...")
+  (Test / testOnly).toTask(" *WelcomeSpec").value
+}

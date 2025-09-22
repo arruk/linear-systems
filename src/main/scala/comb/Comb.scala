@@ -16,7 +16,7 @@ class CombParamSInt(val nBits: Int = 32) extends Module {
 
   val aExt = io.a.pad(nBits + 1) // SInt(nBits+1)
   val bExt = io.b.pad(nBits + 1) // SInt(nBits+1)
-
+  
   val sumWide = Wire(SInt((nBits + 1).W))
   sumWide := aExt +& bExt
   io.OutSum      := sumWide(nBits - 1, 0).asSInt
@@ -59,6 +59,7 @@ class Comb extends Module {
   adder.io.cin := false.B
 
   io.OutSum := adder.io.sum
+
   io.OutDif := io.a - io.b
 
 }
