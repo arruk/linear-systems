@@ -2,7 +2,6 @@ package comb
 
 import chisel3._
 import chisel3.util._
-import chisel3._
 
 class CombParamSInt(val nBits: Int = 32) extends Module {
   val io = IO(new Bundle {
@@ -132,4 +131,10 @@ class Adder(val nBits: Int) extends Module {
 
   io.sum  := sums.asUInt
   io.cout := carry(nBits)
+}
+
+object MyMain {
+  def main(args: Array[String]): Unit = {
+    emitVerilog(new Comb())
+  }
 }
